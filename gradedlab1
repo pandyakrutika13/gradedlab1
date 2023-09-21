@@ -1,0 +1,88 @@
+import java.util.Random;
+import java.util.Scanner;
+
+public class Employees {
+	
+	String firstName,lastName;
+	String email="";
+	String password="";
+	
+	
+	Employees(String firstName,String lastName)
+	{
+		this.firstName=firstName;
+		this.lastName=lastName;
+		
+	}
+	String generatePassword(String firstName,String lastName ,String department)
+	{
+		if(department.equalsIgnoreCase("Technical"))
+		{
+			email=email+firstName.toLowerCase()+lastName.toLowerCase()+"@"+"tech."+"abc."+"com";
+			
+			
+		}
+		if(department.equalsIgnoreCase("Admin"))
+		{
+			email=firstName.toLowerCase()+lastName.toLowerCase()+"@"+"admin."+"abc."+"com";
+			
+		}
+		if(department.equalsIgnoreCase("Human Resource"))
+		{
+			email=firstName.toLowerCase()+lastName.toLowerCase()+"@"+"hr."+"abc."+"com";
+			
+		}
+		if(department.equalsIgnoreCase("Legal"))
+		{
+			email=firstName.toLowerCase()+lastName.toLowerCase()+"@"+"legal."+"abc."+"com";
+			
+		}
+		return email;
+	}
+	String generatePassword()
+	{
+		Random rand=new Random();
+		int number=rand.nextInt(100);
+		String s="Abvf@%$";
+		return number+s;
+	}
+	void showCredentials(String email,String password)
+	{
+		System.out.println("Email --->"+email);
+		System.out.println("\n");
+		System.out.println("Password --->"+password);
+	}
+
+	public static void main(String[] args) {
+		Employees e=new Employees("Harshit", "Chowdhary");
+		Scanner sc=new Scanner(System.in);
+		
+		System.out.println("Enter the department");
+		String department=sc.next();
+	    String mail=	e.generatePassword(e.getFirstName(), e.getLastName(),department);
+
+	
+		
+		String password=e.generatePassword();
+		
+		e.showCredentials(mail, password);
+		
+		
+	}
+	
+	
+	
+	public String getFirstName() {
+		return firstName;
+	}
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+	public String getLastName() {
+		return lastName;
+	}
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+
+}
